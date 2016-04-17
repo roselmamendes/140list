@@ -1,0 +1,18 @@
+{
+  "name": "140list-twitter-api",
+  "version": "1.0.0",
+  "description": "Gets response from Twitter API.",
+  "main": "twitter-calls.js",
+  "scripts": {
+    "run": "node twitter.js"
+  },
+  "author": "Roselma Mendes",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "multer": "^1.1.0",
+    "twitter-node-client": "0.0.6"
+  }
+}
