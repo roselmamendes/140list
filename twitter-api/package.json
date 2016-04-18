@@ -4,6 +4,7 @@
   "description": "Gets response from Twitter API.",
   "main": "twitter-calls.js",
   "scripts": {
+    "preinstall": "npm install -g mocha",
     "run": "node twitter.js"
   },
   "author": "Roselma Mendes",

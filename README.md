@@ -19,6 +19,7 @@ This command will install:
   - Cookie-parser
   - Multer
 - [TwitterJSClient](https://github.com/BoyCook/TwitterJSClient)
+- Mocha
 
 Set the following ENV variables:
 
@@ -30,3 +31,9 @@ Set the following ENV variables:
 It's necessary create a [Twitter app](https://dev.twitter.com/apps). There you get the keys to fill the ENV variables mentioned above.
 
 After install all the dependencies, you can use the command `npm run-script run` to up the server.
+
+The available urls are:
+
+- /twitter/lists?username=username -> return the name and id for each list from username (twitter account).
+
+To run the tests use `mocha`.
