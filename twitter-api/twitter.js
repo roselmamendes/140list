@@ -15,8 +15,6 @@ app.get('/twitter/lists', function (req, res) {
       var tw_lists = helper.get_lists_info(data);
 
       if(tw_lists.length == 0){
-        res.status(200);
-
         res.send({
           "data": tw_lists,
           "twitter_original_data": data
@@ -25,6 +23,23 @@ app.get('/twitter/lists', function (req, res) {
       }else{
         res.send(tw_lists);
       }
+    });
+});
+
+app.get('/twitter/lists/tweets', function(req, res){
+  var list_id = req.query.list_id;
+  var count = req.query.count;
+  twitter.getCustomApiCall(
+    '/lists/statuses.json',
+    {list_id: list_id, count: count, include_entities: false, include_rts: false},
+    function(error, response, body){
+      res.status(error.statusCode);
+      res.send({
+          "error" : error.data
+      });
+    },
+    function(data){
+      res.send(helper.get_tweets_by_list(data));
     });
 });
 

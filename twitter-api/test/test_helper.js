@@ -8,13 +8,30 @@ describe('helper', function(){
 
     expected_list_data = [{"name": "lista1", "id": 1},{"name": "lista2", "id": 2}];
 
-    assert.deepEqual(helper.get_lists_info(data),expected_list_data)
+    assert.deepEqual(expected_list_data, helper.get_lists_info(data));
   });
 
   it('get_lists_info should return an empty list if the string is unreadable', function(){
     data = 'teste';
 
-    assert.deepEqual(helper.get_lists_info(data),[])
+    assert.deepEqual([],helper.get_lists_info(data));
+  });
+
+  it('get_tweets_by_list should return a list of tweets from a twitter list', function(){
+    var data = '[{"geo":null,"coordinates":null,"place":null,"created_at":"Sun Apr 24 23:08:24 +0000 2016", "id": 45, "text": "alguma coisa", "user": {"id": 73,"screen_name": "fulano"}}]';
+
+    var expectedResult = [{
+      "created_at": "Sun Apr 24 23:08:24 +0000 2016",
+      "id": 45,
+      "text": "alguma coisa",
+      "user":
+      {
+        "id": 73,
+        "screen_name": "fulano"
+      }
+    }];
+
+    assert.deepEqual(expectedResult, helper.get_tweets_by_list(data));
   });
 
 });

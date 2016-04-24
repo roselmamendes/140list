@@ -6,9 +6,9 @@ var server = require('../server-config.js').server;
 var twitter = require('../twitter-config.js').twitter;
 var app = require('../twitter.js').app;
 
-describe('twitter/lists', function(){
+var getCustomApiCall = sinon.stub(twitter, 'getCustomApiCall');
 
-  var getCustomApiCall = sinon.stub(twitter, 'getCustomApiCall');
+describe('twitter/lists', function(){
 
   it('should return a name and id for each list from twitter account', function(done){
     var data = '[{"name": "humanos", "id": 230154551}]';
@@ -50,7 +50,34 @@ describe('twitter/lists', function(){
     request(server)
     .get('/twitter/lists?username=roselmamendes')
     .expect(200)
-    .expect({'data': [], 'twitter_original_data': 'teste'})
+    .expect(expectedResult)
+    .end(done);
+
+  });
+
+});
+
+describe('twitter/lists/tweets', function(){
+
+  it('should return tweets of specific list', function(done){
+    var data = '[{"geo":null,"coordinates":null,"place":null,"created_at":"Sun Apr 24 23:08:24 +0000 2016", "id": 45, "text": "alguma coisa", "user": {"id": 73,"screen_name": "fulano"}}]';
+    var expectedResult = [{
+      "created_at": "Sun Apr 24 23:08:24 +0000 2016",
+      "id": 45,
+      "text": "alguma coisa",
+      "user":
+      {
+        "id": 73,
+        "screen_name": "fulano"
+      }
+    }];
+
+    getCustomApiCall.callsArgWith(3, data);
+
+    request(server)
+    .get('/twitter/lists/tweets?list_id=1&count=2')
+    .expect(200)
+    .expect(expectedResult)
     .end(done);
 
   });
