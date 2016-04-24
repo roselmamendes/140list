@@ -12,7 +12,19 @@ app.get('/twitter/lists', function (req, res) {
         });
     },
     function(data){
-      res.send(helper.get_lists_info(data));
+      var tw_lists = helper.get_lists_info(data);
+
+      if(tw_lists.length == 0){
+        res.status(200);
+
+        res.send({
+          "data": tw_lists,
+          "twitter_original_data": data
+        });
+
+      }else{
+        res.send(tw_lists);
+      }
     });
 });
 

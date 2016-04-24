@@ -1,6 +1,7 @@
 module.exports = {
   get_lists_info : function(data){
-    data_json = JSON.parse(data);
+    var data_json = this.convert_to_json(data);
+
     lists_names = [];
     for(i=0; i < data_json.length ; i++){
 
@@ -11,5 +12,17 @@ module.exports = {
 
     }
     return lists_names;
+  },
+
+  convert_to_json : function(data){
+    var data_json;
+    try{
+      data_json = JSON.parse(data);
+      return data_json;
+    }
+    catch(e){
+      return [];
+    }
+
   }
 }

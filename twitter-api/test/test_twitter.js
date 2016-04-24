@@ -41,4 +41,18 @@ describe('twitter/lists', function(){
 
   });
 
+  it('should return an empty list and original data which is unreadable', function(done){
+    var data = 'teste';
+    var expectedResult = {'data': [], 'twitter_original_data': data};
+
+    getCustomApiCall.callsArgWith(3, data);
+
+    request(server)
+    .get('/twitter/lists?username=roselmamendes')
+    .expect(200)
+    .expect({'data': [], 'twitter_original_data': 'teste'})
+    .end(done);
+
+  });
+
 });

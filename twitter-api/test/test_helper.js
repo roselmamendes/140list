@@ -11,4 +11,10 @@ describe('helper', function(){
     assert.deepEqual(helper.get_lists_info(data),expected_list_data)
   });
 
+  it('get_lists_info should return an empty list if the string is unreadable', function(){
+    data = 'teste';
+
+    assert.deepEqual(helper.get_lists_info(data),[])
+  });
+
 });
