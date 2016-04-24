@@ -2,7 +2,7 @@
   "name": "140list-twitter-api",
   "version": "1.0.0",
   "description": "Gets response from Twitter API.",
-  "main": "twitter-calls.js",
+  "main": "twitter.js",
   "scripts": {
     "preinstall": "npm install -g mocha",
     "run": "node twitter.js"
@@ -15,5 +15,9 @@
     "express": "^4.13.4",
     "multer": "^1.1.0",
     "twitter-node-client": "0.0.6"
+  },
+  "devDependencies": {
+    "sinon": "^1.17.3",
+    "supertest": "^1.2.0"
   }
 }

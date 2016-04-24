@@ -15,5 +15,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(express.static('public'));
 
 module.exports = {
-  app : app
+  app : app,
+  server: server
 }

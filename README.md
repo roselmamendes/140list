@@ -20,6 +20,7 @@ This command will install:
   - Multer
 - [TwitterJSClient](https://github.com/BoyCook/TwitterJSClient)
 - Mocha
+- Sinon
 
 Set the following ENV variables:
 
