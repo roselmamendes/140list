@@ -11,10 +11,10 @@ describe('helper', function(){
     assert.deepEqual(expected_list_data, helper.get_lists_info(data));
   });
 
-  it('get_lists_info should return an empty list if the string is unreadable', function(){
+  it('get_lists_info should return an empty list and original data if the string is unreadable', function(){
     data = 'teste';
 
-    assert.deepEqual([],helper.get_lists_info(data));
+    assert.deepEqual({"data":[],"twitter_original_data":"teste"},helper.get_lists_info(data));
   });
 
   it('get_tweets_by_list should return a list of tweets from a twitter list', function(){
@@ -32,6 +32,12 @@ describe('helper', function(){
     }];
 
     assert.deepEqual(expectedResult, helper.get_tweets_by_list(data));
+  });
+
+  it('get_tweets_by_list should return an empty list and original data if the string is unreadable', function(){
+    data = 'teste';
+
+    assert.deepEqual({"data":[],"twitter_original_data":"teste"},helper.get_tweets_by_list(data));
   });
 
 });

@@ -59,7 +59,7 @@ describe('twitter/lists', function(){
 
 describe('twitter/lists/tweets', function(){
 
-  it('should return tweets of specific list', function(done){
+  it('should return tweets from specific list', function(done){
     var data = '[{"geo":null,"coordinates":null,"place":null,"created_at":"Sun Apr 24 23:08:24 +0000 2016", "id": 45, "text": "alguma coisa", "user": {"id": 73,"screen_name": "fulano"}}]';
     var expectedResult = [{
       "created_at": "Sun Apr 24 23:08:24 +0000 2016",
@@ -77,6 +77,23 @@ describe('twitter/lists/tweets', function(){
     request(server)
     .get('/twitter/lists/tweets?list_id=1&count=2')
     .expect(200)
+    .expect(expectedResult)
+    .end(done);
+
+  });
+
+  it('should return the error and message from twitter service', function(done){
+    var data = {
+      statusCode: 400,
+      data: '{"errors":[{"code":215,"message":"Bad Authentication data."}]}'
+    };
+    var expectedResult = {"error": data.data};
+
+    getCustomApiCall.callsArgWith(2, data);
+
+    request(server)
+    .get('/twitter/lists/tweets?list_id=1&count=2')
+    .expect(400)
     .expect(expectedResult)
     .end(done);
 
