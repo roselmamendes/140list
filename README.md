@@ -37,4 +37,6 @@ The available urls are:
 
 - /twitter/lists?username=username -> return the name and id for each list from username (twitter account).
 
+- /twitter/lists/tweets?list_id=id&count=3 -> return the tweets from a list. It's possible to use count parameter to set the maximum of tweets to return. 
+
 To run the tests use `mocha`.
