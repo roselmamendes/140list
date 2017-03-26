@@ -40,3 +40,22 @@ The available urls are:
 - /twitter/lists/tweets?list_id=id&count=3 -> return the tweets from a list. It's possible to use count parameter to set the maximum of tweets to return. 
 
 To run the tests use `mocha`.
+
+## Front end - angular app
+
+### Installation
+
+Go to front-end folder and run `npm install`.
+
+Installed Dependencies:
+
+- Angular 1.4.3
+- Lodash
+- Restangular
+- Angular-mocks
+- Jasmine
+- Karma
+- Karma-jasmine
+- Karma-phantomjs-launcher
+
+To run the tests `npm test`.

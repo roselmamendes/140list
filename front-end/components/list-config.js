@@ -1,10 +1,9 @@
 angular.module('List').
 
 config(function(RestangularProvider){
-  RestangularProvider.setBaseUrl('https://api.twitter.com/1.1/');
+  RestangularProvider.setBaseUrl('http://localhost:3000');
   RestangularProvider.setDefaultHeaders({
-    'oauth_consumer_key': 'env-variable',
-    'oauth_signature_method':	'HMAC-SHA1',
-    'oauth_version':	'1.0'
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
   });
 });

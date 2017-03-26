@@ -1,1 +1,1 @@
-angular.module('List',['restangular']);
+angular.module('List',['ngResource']);

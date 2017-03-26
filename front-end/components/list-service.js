@@ -1,11 +1,6 @@
-angular.module('List').
+angular.module('List')
 
-service('ListService', function(Restangular){
-  var service = {
-    getUserLists: function(){
-      return ['list1', 'list2'];
+.service('listService', ['$resource', function($resource){
+  return $resource('http://localhost:3000/twitter/lists', {}, {query: {method:'GET', params:{username:''}, isArray:true}});
     }
-  }
-
-  return service;
-});
+]);
